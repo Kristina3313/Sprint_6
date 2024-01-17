@@ -1,5 +1,3 @@
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 import allure
 from locators.main_page_locators import LocatorsMain
 from pages.base_page import BasePage
@@ -30,69 +28,66 @@ class OrderPage(BasePage):
     choose31january = LocatorsOrder.CHOOSE_31_JANUARY
     choose2days = LocatorsOrder.CHOOSE_2_DAYS
 
-    # метод кликает на кнопку при открытии страницы "Да все привыкли"
-    @allure.step('Click to button with cookie')
+    @allure.step('Клик на кнопку с принятием куки')
     def click_button_cookie(self):
         self.find_and_click_element(self.button_cookie)
 
-    # метод кликает по кнопке "Заказать" в хэдере
-    @allure.step('Click to button from header')
+    @allure.step('Клик на кнопку "Заказать" в хэдере')
     def click_order_button_from_header(self):
         self.find_and_click_element(self.buttonOrderHeader)
 
-    # метод кликает по кнопке "Заказать" в нижней части страницы
-    @allure.step('Click to button from down page')
+    @allure.step('Клик на кнопку "Заказать" в нижней части страницы')
     def click_order_button_from_down_page(self):
         self.find_and_click_element(self.buttonOrderDownPage)
 
-    @allure.step('Enter name')
+    @allure.step('Ввод имени')
     def input_name(self, name):
         self.input_text(self.inputName, name)
 
-    @allure.step('Enter surname')
+    @allure.step('Ввод фамилии')
     def input_surname(self, surname):
         self.input_text(self.inputFamiliya, surname)
 
-    @allure.step('Enter adress')
-    def input_adress(self, adress):
-        self.input_text(self.inputAdress, adress)
+    @allure.step('Ввод адреса')
+    def input_address(self, address):
+        self.input_text(self.inputAdress, address)
 
-    @allure.step('Choose metro')
-    def enter_metro_filed(self):
+    @allure.step('Выбор метро')
+    def select_metro(self):
         self.choose_option_from_dropdown(self.chooseMetro, self.metroPreobrazhenskaya)
 
-    @allure.step('Enter number phone')
-    def enter_phone_filed(self, number):
+    @allure.step('Ввод номера телефона')
+    def enter_phone_field(self, number):
         self.input_text(self.inputNumber, number)
 
-    @allure.step('Click to button Next')
+    @allure.step('Клик на кнопку "Далее"')
     def click_next_button(self):
         self.find_and_click_element(self.buttonNext)
 
-    @allure.step('Choose day')
-    def enter_when_filed(self):
+    @allure.step('Выбор дня')
+    def select_date(self):
         self.choose_option_from_dropdown(self.inputWhere, self.choose31january)
 
-    @allure.step('Choose period')
-    def enter_period_filed(self):
+    @allure.step('Выбор периода')
+    def select_period(self):
         self.choose_option_from_dropdown(self.inputPeriod, self.choose2days)
 
-    @allure.step('Click to grey check-box')
-    def click_on_checkbox_grey(self):
+    @allure.step('Клик на чек-бокс "Серый"')
+    def click_on_grey_checkbox(self):
         self.find_and_click_element(self.checkBoxGrey)
 
-    @allure.step('Enter comment')
-    def enter_comment_filed(self, comment):
+    @allure.step('Ввод комментария')
+    def enter_comment_field(self, comment):
         self.input_text(self.inputComment, comment)
 
-    @allure.step('Click to Zakazat button')
+    @allure.step('Клик на кнопку "Заказать"')
     def click_order_button(self):
         self.find_and_click_element(self.buttonZakazat)
 
-    @allure.step('Click to Yes button in popup')
+    @allure.step('Клик на кнопку "Да" в поп-апе')
     def click_yes_in_popup(self):
         self.find_and_click_element(self.buttonYes)
 
-    @allure.step('Get text from button')
+    @allure.step('Получение текста из кнопки')
     def get_text_from_button_in_popup(self):
-        return self.driver.find_element(*self.button_check_status).text
+        return self.get_text_from_element(self.button_check_status)
