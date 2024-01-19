@@ -34,69 +34,15 @@ class MainPage(BasePage):
     def scroll_to_pointer(self):
         self.scroll_into_view(self.pointer7)
 
-    @allure.step('Клик по стрелке "Сколько это стоит? И как оплатить?"')
-    def click_pointer0(self):
-        self.find_and_click_element(self.pointer0)
+    @allure.step('Клик по стрелке')
+    def click_pointer(self, pointer_index):
+        pointer_locator = getattr(self, f'pointer{pointer_index}')
+        self.find_and_click_element(pointer_locator)
 
-    @allure.step('Клик по стрелке "Хочу сразу несколько самокатов! Так можно?"')
-    def click_pointer1(self):
-        self.find_and_click_element(self.pointer1)
-
-    @allure.step('Клик по стрелке "Как рассчитывается время аренды?"')
-    def click_pointer2(self):
-        self.find_and_click_element(self.pointer2)
-
-    @allure.step('Клик по стрелке "Можно ли заказать самокат прямо на сегодня?"')
-    def click_pointer3(self):
-        self.find_and_click_element(self.pointer3)
-
-    @allure.step('Клик по стрелке "Можно ли продлить заказ или вернуть самокат раньше?"')
-    def click_pointer4(self):
-        self.find_and_click_element(self.pointer4)
-
-    @allure.step('Клик по стрелке "Вы привозите зарядку вместе с самокатом?"')
-    def click_pointer5(self):
-        self.find_and_click_element(self.pointer5)
-
-    @allure.step('Клик по стрелке "Можно ли отменить заказ?"')
-    def click_pointer6(self):
-        self.find_and_click_element(self.pointer6)
-
-    @allure.step('Клик по стрелке "Я живу за МКАДом, привезёте?"')
-    def click_pointer7(self):
-        self.find_and_click_element(self.pointer7)
-
-    @allure.step('Получение текста под стрелкой 0')
-    def get_text_under_pointer0(self):
-        return self.get_text_from_element(self.text0)
-
-    @allure.step('Получение текста под стрелкой 1')
-    def get_text_under_pointer1(self):
-        return self.get_text_from_element(self.text1)
-
-    @allure.step('Получение текста под стрелкой 2')
-    def get_text_under_pointer2(self):
-        return self.get_text_from_element(self.text2)
-
-    @allure.step('Получение текста под стрелкой 3')
-    def get_text_under_pointer3(self):
-        return self.get_text_from_element(self.text3)
-
-    @allure.step('Получение текста под стрелкой 4')
-    def get_text_under_pointer4(self):
-        return self.get_text_from_element(self.text4)
-
-    @allure.step('Получение текста под стрелкой 5')
-    def get_text_under_pointer5(self):
-        return self.get_text_from_element(self.text5)
-
-    @allure.step('Получение текста под стрелкой 6')
-    def get_text_under_pointer6(self):
-        return self.get_text_from_element(self.text6)
-
-    @allure.step('Получение текста под стрелкой 7')
-    def get_text_under_pointer7(self):
-        return self.get_text_from_element(self.text7)
+    @allure.step('Получение текста под стрелкой')
+    def get_text_under_pointer(self, pointer_index):
+        text_locator = getattr(self, f'text{pointer_index}')
+        return self.get_text_from_element(text_locator)
 
     @allure.step('Клик на лого "Самокат')
     def click_to_samokat_logo(self):
